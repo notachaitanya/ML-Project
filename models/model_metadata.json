@@ -1,0 +1,174 @@
+{
+    "project": "Insurance Claim Fraud Detection Using XGBoost with Hyperparameter Tuning",
+    "dataset_source": "Live MySQL Database (insurance_fraud_db.vehicle_claims)",
+    "total_records": 15420,
+    "train_samples": 12336,
+    "test_samples": 3084,
+    "target_balance": {
+        "genuine_count": 14497,
+        "fraud_count": 923,
+        "fraud_percentage": 5.985732814526589
+    },
+    "imputation_constants": {
+        "median_age": 39.0,
+        "mode_day_claimed": "Monday",
+        "mode_month_claimed": "Jan"
+    },
+    "feature_schema": {
+        "categorical": [
+            "Month",
+            "DayOfWeek",
+            "Make",
+            "AccidentArea",
+            "DayOfWeekClaimed",
+            "MonthClaimed",
+            "Sex",
+            "MaritalStatus",
+            "Fault",
+            "PolicyType",
+            "VehicleCategory",
+            "VehiclePrice",
+            "Days_Policy_Accident",
+            "Days_Policy_Claim",
+            "PastNumberOfClaims",
+            "AgeOfVehicle",
+            "AgeOfPolicyHolder",
+            "PoliceReportFiled",
+            "WitnessPresent",
+            "AgentType",
+            "NumberOfSuppliments",
+            "AddressChange_Claim",
+            "NumberOfCars",
+            "BasePolicy"
+        ],
+        "numerical": [
+            "WeekOfMonth",
+            "WeekOfMonthClaimed",
+            "Age",
+            "RepNumber",
+            "Deductible",
+            "DriverRating",
+            "Year"
+        ],
+        "all_features": [
+            "Month",
+            "WeekOfMonth",
+            "DayOfWeek",
+            "Make",
+            "AccidentArea",
+            "DayOfWeekClaimed",
+            "MonthClaimed",
+            "WeekOfMonthClaimed",
+            "Sex",
+            "MaritalStatus",
+            "Age",
+            "Fault",
+            "PolicyType",
+            "VehicleCategory",
+            "VehiclePrice",
+            "RepNumber",
+            "Deductible",
+            "DriverRating",
+            "Days_Policy_Accident",
+            "Days_Policy_Claim",
+            "PastNumberOfClaims",
+            "AgeOfVehicle",
+            "AgeOfPolicyHolder",
+            "PoliceReportFiled",
+            "WitnessPresent",
+            "AgentType",
+            "NumberOfSuppliments",
+            "AddressChange_Claim",
+            "NumberOfCars",
+            "Year",
+            "BasePolicy"
+        ]
+    },
+    "numerical_baseline_stats": {
+        "WeekOfMonth": {
+            "mean": 2.7896400778210118,
+            "std": 1.2821975208699212,
+            "min": 1.0,
+            "max": 5.0
+        },
+        "WeekOfMonthClaimed": {
+            "mean": 2.7014429312581063,
+            "std": 1.2544663398420886,
+            "min": 1.0,
+            "max": 5.0
+        },
+        "Age": {
+            "mean": 40.657101167315176,
+            "std": 12.211537528057983,
+            "min": 16.0,
+            "max": 80.0
+        },
+        "RepNumber": {
+            "mean": 8.436365110246433,
+            "std": 4.601457679647574,
+            "min": 1.0,
+            "max": 16.0
+        },
+        "Deductible": {
+            "mean": 407.9118028534371,
+            "std": 44.61046830700493,
+            "min": 300.0,
+            "max": 700.0
+        },
+        "DriverRating": {
+            "mean": 2.4907587548638133,
+            "std": 1.1192006853746321,
+            "min": 1.0,
+            "max": 4.0
+        },
+        "Year": {
+            "mean": 1994.861057068742,
+            "std": 0.8026027692290799,
+            "min": 1994.0,
+            "max": 1996.0
+        }
+    },
+    "metrics_comparison": {
+        "logistic_regression": {
+            "model": "Logistic Regression (Linear L2)",
+            "accuracy": 0.6433203631647212,
+            "precision": 0.13193885760257443,
+            "recall": 0.8864864864864865,
+            "f1_score": 0.22969187675070027,
+            "roc_auc": 0.8064104117915777,
+            "pr_auc": 0.15606474350669208
+        },
+        "basic_xgboost": {
+            "model": "Basic XGBoost (Standard Defaults)",
+            "accuracy": 0.938715953307393,
+            "precision": 0.4411764705882353,
+            "recall": 0.08108108108108109,
+            "f1_score": 0.136986301369863,
+            "roc_auc": 0.8479839273561247,
+            "pr_auc": 0.2496151079961322
+        },
+        "xgboost_tuned": {
+            "model": "Improved Tuned XGBoost",
+            "best_hyperparameters": {
+                "learning_rate": 0.08,
+                "max_depth": 6,
+                "n_estimators": 100,
+                "scale_pos_weight": 8
+            },
+            "cv_pr_auc": 0.25881736798710026,
+            "optimal_threshold": 0.6186305284500122,
+            "accuracy": 0.8508430609597925,
+            "precision": 0.20302375809935205,
+            "recall": 0.5081081081081081,
+            "f1_score": 0.29012345679012347,
+            "roc_auc": 0.8380429411819547,
+            "pr_auc": 0.24175392009464905,
+            "optimal_threshold_metrics": {
+                "accuracy": 0.9114785992217899,
+                "precision": 0.2411764705882353,
+                "recall": 0.22162162162162163,
+                "f1_score": 0.23098591549295774
+            }
+        }
+    }
+}
